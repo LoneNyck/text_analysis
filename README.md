@@ -8,4 +8,5 @@ Download all the following files and put them in the same folder.
 - word.csv is the file in which all the words, their lenght and their number of occurrence are stored
 - text_analyser.py is the script to run to compile the word.csv file
 - notebook.ipynb is where you can see the analysis of your text. they are written in two languages: the main one is in italian, the _eng variation in in english
+
 You don't have to delete the csv file as the programm automatically overwrites it each time you run the python file
