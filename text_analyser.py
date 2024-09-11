@@ -4,32 +4,32 @@ import csv
 with open('file_to_read.txt', 'r') as file:
     content = file.read()
 
-    testo = str(content.replace("\n", " ")).replace("'", " ")
+    text = str(content.replace("\n", " ")).replace("'", " ")
 
-    lista_parole_miste = testo.split(" ")
+    mixed_words_list = text.split(" ")
 
-    lista_parole = [re.sub(r'[^a-zA-Z0-9àèéìòù]', '', parola).lower() for parola in lista_parole_miste]
-    lista_parole = [parola for parola in lista_parole if parola]
-    lista_parole.sort()
+    words_list = [re.sub(r'[^a-zA-Z0-9àèéìòù]', '', word).lower() for word in mixed_words_list]
+    words_list = [word for word in words_list  if word]
+    words_list .sort()
 
-    parole_uniche = []
+    unique_words = []
     length = []
-    frequenze = []
+    occurrence = []
 
-    for parola in lista_parole:
-        freq = lista_parole.count(parola)
+    for word in words_list :
+        freq = words_list .count(word)
 
-        if parola in parole_uniche:
+        if word in unique_words:
             continue
         else:
-            parole_uniche.append(parola)
-            length.append(len(parola))
-            frequenze.append(freq)
+            unique_words.append(word)
+            length.append(len(word))
+            occurrence.append(freq)
 
-    lista = [(parole_uniche[i], length[i], frequenze[i]) for i in range(min(len(parole_uniche), len(length), len(frequenze)))]
+    total_list = [(unique_words[i], length[i], occurrence[i]) for i in range(min(len(unique_words), len(length), len(occurrence)))]
 
     with open('words.csv', 'w', newline='') as df:
         title_row = ['word', 'length', 'freq']
         writer = csv.writer(df)
         writer.writerow(title_row)
-        writer.writerows(lista)
+        writer.writerows(total_list)
